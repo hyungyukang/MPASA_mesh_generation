@@ -1,0 +1,37 @@
+<mesh_parameters>
+
+  <!-- Minimum DX an maximum DX
+       - To create a quasi-uniform (QU) mesh, set [dxMin=dxMax].
+       - dxMin here is ignored if [dxWindowConst=true] -->
+  <dxMin>80.0</dxMin>
+  <dxMax>320.0</dxMax>
+
+  <!-- Output mesh file name -->
+  <outFileName>base_mesh.nc</outFileName>
+
+  <!-- Do all windows have the same dxMin and dxMax?
+       If false, dxMin and dxMax must be specified in windowDxVar-->
+  <dxWindowConst>true</dxWindowConst>
+
+  <!-- Horizontal grid resolution (deg x deg) of the base lat-lon grid. -->
+  <dlatBase>0.20</dlatBase>
+  <dlonBase>0.20</dlonBase>
+
+  <!-- Window information for [dxWindowConst=true] -->
+  <windowDxConst format="lon,lat,diameter,sigma">
+    -80.0,25.25,500.0,300.0
+    -90.0,30.11,500.0,300.0
+    100.0,-45.11,800.0,300.0
+     50.0,15.11,500.0,300.0
+  </windowDxConst>
+
+  <!-- Window information for [dxWindowConst=false]
+       to include dxMin and dxMax info -->
+  <windowDxVar format="lon,lat,diameter,sigma,dxMin">
+    -80.0, 25.25, 500.0, 300.0, 80.0
+    -90.0, 30.11, 500.0, 400.0, 80.0
+    100.0,-45.11, 800.0, 300.0, 80.0
+     50.0, 15.11, 500.0, 250.0, 80.0
+  </windowDxVar>
+
+</mesh_parameters>
