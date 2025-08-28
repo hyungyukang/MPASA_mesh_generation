@@ -14,7 +14,7 @@ import matplotlib.tri as mtri
 import cartopy.crs as ccrs
 
 # --- File name ---
-fileName = "base_test_mesh.nc"
+fileName = "base_mesh.nc"
 
 # --- load ---
 ds = xr.open_dataset(fileName)
