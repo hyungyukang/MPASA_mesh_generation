@@ -19,19 +19,17 @@
 
   <!-- Window information for [dxWindowConst=true] -->
   <windowDxConst format="lon,lat,diameter,sigma">
-    -80.0,25.25,500.0,300.0
-    -90.0,30.11,500.0,300.0
-    100.0,-45.11,800.0,300.0
-     50.0,15.11,500.0,300.0
+     -84.31, 35.93, 1000.0, 280.0
+     127.50, 37.50, 500.0 , 280.0
+    -154.50, 63.40, 750.0 , 280.0
   </windowDxConst>
 
   <!-- Window information for [dxWindowConst=false]
        to include dxMin and dxMax info -->
   <windowDxVar format="lon,lat,diameter,sigma,dxMin">
-    -80.0, 25.25, 500.0, 300.0, 80.0
-    -90.0, 30.11, 500.0, 400.0, 80.0
-    100.0,-45.11, 800.0, 300.0, 80.0
-     50.0, 15.11, 500.0, 250.0, 80.0
+     -84.31, 35.93, 1000.0, 280.0, 40.0
+     127.50, 37.50, 500.0 , 280.0, 80.0
+    -154.50, 63.40, 750.0 , 280.0, 20.0
   </windowDxVar>
 
 </mesh_parameters>
