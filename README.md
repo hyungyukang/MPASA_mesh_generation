@@ -10,7 +10,8 @@ conda activate mpas_tools_env
 ```
 
 ## 2. Changing ‘config_mesh.xml’
-- Change ‘config_mesh.xml’ file accordingly
+- To configure the mesh, modify the `config_mesh.xml` file accordingly.
+  - For a quick test, this modification is not necessary.
 
 ## 3. Running the script
 - Run the script ‘mesh_gen_MPASA.py’
@@ -41,7 +42,7 @@ conda install jigsawpy
     ```
     cp cartopy/* ~/.local/share/cartopy/shapefiles/natural_earth/physical/
     ```
-## 4. Verification (optional): Visualize the generated mesh
+## 4. Verification (optional): Visualizing the generated mesh
 - Ensure that the mesh file name specified at line 17 of `plot_cellWidth_raw_mesh.py` matches the `outFileName` defined in `config_mesh.xml`.
 - Run the script `mesh_gen_MPASA.py`
 ```
