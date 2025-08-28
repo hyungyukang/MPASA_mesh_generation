@@ -7,9 +7,7 @@
 ```
 conda create -n mpas_tools_env -c conda-forge mpas_tools
 conda activate mpas_tools_env
-conda install jigsawpy
 ```
-- There is no need to reinstall `jigsawpy` after the initial installation.
 
 ## 2. Changing ‘config_mesh.xml’
 - Change ‘config_mesh.xml’ file accordingly
@@ -19,9 +17,13 @@ conda install jigsawpy
 ```
 python mesh_gen_MPASA.py
 ```
-
+- If there is an error with `jigsawpy not installed`,
+```
+conda install jigsawpy
+```
+- There is no need to reinstall `jigsawpy` after the initial installation.
 - The script will create several files:
-  - `base_mesh.nc` (outFileName in `config_mesh.xml`): A generated mesh
+  - `base_mesh.nc` (`outFileName` in `config_mesh.xml`): A generated mesh
   - `graph.info`: Graph partition file of the mesh
   - `fig_base_mesh_latlon.png`
     - This is a quick visualization of the mesh configuration in the latitude-longitude grid.
@@ -40,9 +42,12 @@ python mesh_gen_MPASA.py
     cp cartopy/* ~/.local/share/cartopy/shapefiles/natural_earth/physical/
     ```
 ## 4. Verification (optional): Visualize the generated mesh
-- Change the mesh file name at line 17 of `plot_cellWidth_raw_mesh.py`
-- Run the script ‘mesh_gen_MPASA.py’
+- Ensure that the mesh file name specified at line 17 of `plot_cellWidth_raw_mesh.py` matches the `outFileName` defined in `config_mesh.xml`.
+- Run the script `mesh_gen_MPASA.py`
 ```
 python plot_cellWidth_raw_mesh.py
 ```
-- Display the figure `fig_mesh_cellWidth.png`
+- Display the figure `fig_mesh_cellWidth.png`.
+  - If no modifications have been made to the `config_mesh.xml` file, the resulting mesh should appear as shown.
+<img width="1408" height="798" alt="image" src="https://github.com/user-attachments/assets/b22e3173-3c9f-4b0b-9b29-7acad5361a1a" />
+
