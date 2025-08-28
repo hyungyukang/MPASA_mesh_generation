@@ -12,6 +12,10 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.tri as mtri
 import cartopy.crs as ccrs
+import cartopy.feature as cfeature
+from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
+import matplotlib.ticker as mticker
+
 
 # --- File name ---
 fileName = "base_mesh.nc"
@@ -35,7 +39,7 @@ if lon.size < 3:
 lon = ((lon + 180.0) % 360.0) - 180.0
 
 # --- levels ---
-nlevels = 251
+nlevels = 201
 vmin = float(np.nanmin(val))
 vmax = float(np.nanmax(val))
 
@@ -59,15 +63,29 @@ ax.set_xlabel("Longitude")
 ax.set_ylabel("Latitude")
 ax.set_title("Cell width (km)")
 
-tick_idx = np.arange(0, len(levels), 25)
-cbar = plt.colorbar(cn, orientation="horizontal", pad=0.08, fraction=0.05)
+tick_idx = np.arange(0, len(levels), 31)
+cbar = plt.colorbar(cn, orientation="horizontal", pad=0.05, fraction=0.04)
 cbar.set_ticks(levels[tick_idx])
-cbar.set_label("Cell width (km)")
 cbar.ax.set_xticklabels([f"{v:.2f}" for v in levels[tick_idx]])
 
 ax.set_xlim(lon.min()-2, lon.max()+2)
 ax.set_ylim(lat.min()-2, lat.max()+2)
 ax.set_aspect("equal", adjustable="box")  # degrees on both axes
+
+
+# add gridlines (ticks + labels)
+gl = ax.gridlines(draw_labels=True, linewidth=0.5, color="gray", alpha=0.5, linestyle="--")
+
+gl.top_labels = False     # no labels at top
+gl.right_labels = False   # no labels at right
+
+gl.xlocator = mticker.FixedLocator(np.arange(-180, 181, 30))
+gl.ylocator = mticker.FixedLocator(np.arange(-90, 91, 30))
+
+gl.xformatter = LONGITUDE_FORMATTER
+gl.yformatter = LATITUDE_FORMATTER
+gl.xlabel_style = {"size": 12}
+gl.ylabel_style = {"size": 12}
 
 plt.tight_layout()
 plt.savefig("fig_mesh_cellWidth.png", dpi=120, bbox_inches="tight")
